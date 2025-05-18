@@ -1,0 +1,182 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: linear-gradient(135deg, #ffd6e0, #ffe2f3, #ffe9f0);
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    text-align: center;
+    padding: 1.5rem;
+    max-width: 90%;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(255, 182, 193, 0.4);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 182, 193, 0.3);
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #ff1493;
+    margin-bottom: 1rem;
+    text-shadow: 1px 1px 2px #fff;
+}
+
+button {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    background: linear-gradient(90deg, #ff69b4, #ff1493);
+    border: none;
+    border-radius: 30px;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255, 105, 180, 0.5);
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(255, 20, 147, 0.5);
+}
+
+#message {
+    margin-top: 1.5rem;
+    font-size: 1.3rem;
+    color: #c71585;
+    display: none;
+    line-height: 1.7;
+}
+
+/* Animasi */
+@keyframes floatUp {
+    0% {
+        bottom: -100px;
+        opacity: 0;
+    }
+
+    30% {
+        opacity: 1;
+    }
+
+    100% {
+        bottom: 110%;
+        opacity: 0;
+    }
+}
+
+@keyframes fall {
+    0% {
+        top: -10px;
+        opacity: 1;
+        transform: rotate(0deg);
+    }
+
+    100% {
+        top: 110%;
+        opacity: 0;
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes pop {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes fade {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-pop {
+    animation: pop 1s ease forwards;
+}
+
+.animate-fade {
+    animation: fade 1.2s ease forwards;
+}
+
+/* Balon */
+.balloon {
+    width: 40px;
+    height: 60px;
+    background-color: pink;
+    border-radius: 50% 50% 45% 45%;
+    position: absolute;
+    animation: floatUp 7s linear infinite;
+}
+
+.balloon::after {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    width: 2px;
+    height: 20px;
+    background: #555;
+}
+
+/* Confetti */
+.confetti {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: gold;
+    animation: fall 6s linear infinite;
+    border-radius: 50%;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    button {
+        font-size: 1rem;
+        padding: 0.8rem 1.5rem;
+    }
+
+    #message {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.7rem;
+    }
+
+    #message {
+        font-size: 1rem;
+    }
+
+    .balloon {
+        width: 30px;
+        height: 50px;
+    }
+}
